@@ -10,6 +10,7 @@ Steps to set up Spring Cloud Config Server:
 2) Along with @SpringBootApplication, add @EnableConfigServer.
 3) Create a git local repository using command prompt and commit all the properties files to local repository with file names like {applicationName}-{environment}.properties.
 4) Connect the Config Server to git local repository by giving local file path of git repository in application.properties file of Config server.
+
 ex: spring.cloud.config.server.git.uri=file:///D:/workspace practice/microservices/Config Server/git-localconfig-repo
 
 Note: 1) Properties files must be committed to git local repository for them to be picked up.
