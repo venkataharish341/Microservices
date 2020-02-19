@@ -2,10 +2,11 @@
 
 In Microservices architecture, there will be 100s of microservices and there are some common features that we have to implement for all these microservices like :
 1) Authentication, Authorization and Security (It is required for each call to every microservice)
-2) Rate Limits
-3) Fault Tolerance
-4) Service Aggregation
-5) Logging
+2) Fault Tolerance
+3) Service Aggregation
+4) Logging
+5) Response Caching
+6) Rate Limits (We can limit no. of requests to any particular microservice per sec or min.)
 
 These are some features that can be done in API gateway.These are a great place for debugging and doing analytics.
 
