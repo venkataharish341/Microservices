@@ -1,4 +1,4 @@
-Eureka Naming Server or Service Registry:
+<b>Eureka Naming Server or Service Registry:</b>
 
 It is a Service Registry which helps store the information of all the microservices and enables one micro service to call another microservice.
 
@@ -10,10 +10,24 @@ Lets say we have a Service Registry which keeps track of all the instances of al
 URL: http://{applicationName}/{URI} --- It gets the url from eureka in a load balanced way and calls the microservice.
 ex: http://currency-exchange-service/currency-exchange/from/{from}/to/{to}</b>
 
-Ribbon Client Side Load Balancer:
+All the microservices register with Eureka Server which can be achieved by providing eureka server address in property files all microservices.
+-- eureka.client.service-url.default-zone=http://localhost:8761/eureka
+
+Server: @EnableEurekaServer
+
+Client: @EnableDiscoveryClient
+
+<img src="Eureka.png" height="300" width="650">
+
+<b>Ribbon Client Side Load Balancer:</b>
 
 Lets say, Microservice A is calling Microservice B and there are 5 instances of Microservice B which are up and running. In this case, Which instance of Mic B should Mic A call..? Yes there comes the client side load balancing. The client Mic A should call the Mic B in round robbin fashion which means for the first time it calls 1st instance of Mic B, then 2nd instance, then 3rd instance, then 4th instance and then 5th instance then again 1st instance and so on. This is client side load balancing. Client is balancing the load on multiple instances of Mic B.
 
-Feign:
+@RibbonClient(name="currency-exchange-service")
+
+<b>Feign:</b>
 
 This is a programmer thing. Calling one microservice to another is very common in microservices architecture. Every time we call another microservice, we have to use RestTemplate and write a lot of code. In order to avoid the repetitive code or boiler plate code, Feign was introduced. We have to create a proxy interface which is annotated with @FeignClient and that class should have methods which defines all the url to all the calling services. This makes it easy to call a microservice from controller just by using those proxy methods.
+
+@EnableFeignClients("com.in28minutes.microservices.currencyconversionservice") --On main method.
+@FeignClient(name="netflix-zuul-api-gateway-server") -- In Feign proxy class.
