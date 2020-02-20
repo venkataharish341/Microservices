@@ -6,7 +6,9 @@ Every Microservice will have dev, uat, prod etc environments. Therefore, every m
 2) Config Server connects to a git repository location
 3) Git repository contains all the properties files of all microservices committed.
 
-Steps to set up Spring Cloud Config Server:
+<img src="Config Server.png" height="420" width="650">
+
+<b>Steps to set up Spring Cloud Config Server:</b>
 
 1) Create a new Spring Boot application and add 'Config Server' dependency in the same.
 2) Along with @SpringBootApplication, add <b>@EnableConfigServer.</b>
@@ -18,7 +20,7 @@ ex: spring.cloud.config.server.git.uri=file:///D:/workspace practice/microservic
 Note: 1) Properties files must be committed to git local repository for them to be picked up.
       2) Use config server url: localhost:{port}/{applicationName}/{environment} to see the properties.
       
-Steps to connect Microservices to Config Server:
+<b>Steps to connect Microservices to Config Server:</b>
 
 1) Rename application.properties to bootstrap.properties.
 2) Connect each microservice to Config Server by providing config server url in bootstrap.properties.
