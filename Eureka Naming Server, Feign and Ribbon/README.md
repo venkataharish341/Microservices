@@ -6,6 +6,10 @@ In Microservices architecture, one microservice call another microservice and ex
 
 Lets say we have a Service Registry which keeps track of all the instances of all microservices, in this case, any microservice can call any other microservice by getting the url of other microservice from Service Registry.
 
+<b>Url to call another microservice after connecting to Eureka:
+URL: http://{applicationName}/{URI} --- It gets the url from eureka in a load balanced way and calls the microservice.
+ex: http://currency-exchange-service/currency-exchange/from/{from}/to/{to}</b>
+
 Ribbon Client Side Load Balancer:
 
 Lets say, Microservice A is calling Microservice B and there are 5 instances of Microservice B which are up and running. In this case, Which instance of Mic B should Mic A call..? Yes there comes the client side load balancing. The client Mic A should call the Mic B in round robbin fashion which means for the first time it calls 1st instance of Mic B, then 2nd instance, then 3rd instance, then 4th instance and then 5th instance then again 1st instance and so on. This is client side load balancing. Client is balancing the load on multiple instances of Mic B.
